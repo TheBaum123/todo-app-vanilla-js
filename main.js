@@ -1,7 +1,7 @@
 let Todos = { }
 
-if(localStorage.getItem("todos") != null) {
-    Todos = JSON.parse(localStorage.getItem("todos"))
+if(localStorage.getItem("todos-vanilla-js:todos") != null) {
+    Todos = JSON.parse(localStorage.getItem("todos-vanilla-js:todos"))
 }
 
 for(let i = 0; i < Object.keys(Todos).length; i++) {
@@ -26,14 +26,14 @@ function addTodo() {
     const uuid = crypto.randomUUID()
     if(input != "") {
         Todos = Object.assign(Todos, {[uuid]:input})
-        localStorage.setItem("todos", JSON.stringify(Todos))
+        localStorage.setItem("todos-vanilla-js:todos", JSON.stringify(Todos))
     }
     refresh()
 }
 
 function refresh() {
-    if(localStorage.getItem("todos") != null) {
-        Todos = JSON.parse(localStorage.getItem("todos"))
+    if(localStorage.getItem("todos-vanilla-js:todos") != null) {
+        Todos = JSON.parse(localStorage.getItem("todos-vanilla-js:todos"))
     }
     for(let i = 0; i < Object.keys(Todos).length; i++) {
         const currentTodoUUID = (Object.keys(Todos)[i])
@@ -55,9 +55,14 @@ document.onkeypress = function(e) {
 
 function remove(uuid) {
     delete Todos[uuid]
-    localStorage.setItem("todos", JSON.stringify(Todos))
+    localStorage.setItem("todos-vanilla-js:todos", JSON.stringify(Todos))
     if(Object.keys(Todos).length == 0) {
-        localStorage.clear()
+        clearTodos()
     }
+    refresh()
+}
+
+function clearTodos() {
+    localStorage.removeItem("todos-vanilla-js:todos")
     refresh()
 }
