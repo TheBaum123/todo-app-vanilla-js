@@ -10,7 +10,14 @@ for(let i = 0; i < Object.keys(Todos).length; i++) {
     console.log(currentTodo + " is stored in " + currentTodoUUID)
     const todoDiv = document.createElement("div")
     const textNode = document.createTextNode(currentTodo)
+    const removeButton = document.createElement("button")
+    const removeTextNode = document.createTextNode("Remove TODO")
+    removeButton.classList.add("remove-button")
+    removeButton.setAttribute("id", "remove-" + currentTodoUUID)
+    removeButton.setAttribute("onclick", "remove(\"" + currentTodoUUID + "\")")
+    removeButton.appendChild(removeTextNode)
     todoDiv.appendChild(textNode)
+    todoDiv.appendChild(removeButton)
     document.getElementById("todos").appendChild(todoDiv)
 }
 
@@ -44,4 +51,13 @@ document.onkeypress = function(e) {
   if(e.key == "Enter") {
     addTodo()
   }
+}
+
+function remove(uuid) {
+    delete Todos[uuid]
+    localStorage.setItem("todos", JSON.stringify(Todos))
+    if(Object.keys(Todos).length == 0) {
+        localStorage.clear()
+    }
+    refresh()
 }
