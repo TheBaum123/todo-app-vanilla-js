@@ -5,11 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>todo app</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-    <input type="text" id="input">
-    <button onclick="addTodo()" id="add-todo">Add to list</button>
-    <button onclick="clearTodos()">Hard Reset</button>
+    <div id="controll-bar">
+        <input type="text" id="input" placeholder="input todo here">
+        <button onclick="addTodo()" id="add-todo">Add to list</button>
+        <button onclick="clearTodos()" id="hard-reset">Hard Reset</button>
+    </div>
     <div id="todos"></div>
     <script src="main.js"></script>
 </body>

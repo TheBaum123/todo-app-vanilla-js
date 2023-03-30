@@ -1,0 +1,62 @@
+:root {
+    --main-bg-color: #2B3D41;
+    --secondary-bg-color: #4C5F6B;
+    --text-color: #E0E2DB;
+    --highlight-color: #A37774;
+    --lighter-secondary-bg-color: #5B6F7A;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    font-family: 'Roboto Mono', monospace;
+}
+
+#controll-bar {
+    display: grid;
+    grid-template-areas: 
+    'input input add reset';
+    height: 5vh;
+    gap: 1vw;
+}
+
+#controll-bar>* {
+    color: var(--text-color);
+    border: 0.25vw var(--lighter-secondary-bg-color) solid;
+    border-radius: 0.5vw;
+    background-color: var(--secondary-bg-color);
+    text-align: center;
+    font-size: 3vh;
+}
+
+#todos {
+    background-color: var(--bg-color);
+    height: fit-content;
+    display: grid;
+    gap: 1vh;
+    margin-top: 5vh;
+}
+
+.todo-div {
+    display: grid;
+    grid-template-areas: 
+    'todo todo todo remove';
+}
+
+.todo-text {
+    color: var(--text-color);
+}
+
+.remove-button {
+    color: var(--text-color);
+    border: 0.25vw var(--lighter-secondary-bg-color) solid;
+    border-radius: 0.25vh;
+    background-color: var(--secondary-bg-color);
+}
+
+.todo-text { grid-area: todo;}
+.remove-button { grid-area: remove;}
+
+#input { grid-area: input;}
+#add-todo { grid-area: add;}
+#hard-reset { grid-area: reset;}
